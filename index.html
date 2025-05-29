@@ -22,7 +22,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="text" type="text" placeholder="Enter " />
+                        id="text" type="text" placeholder="Enter " required />
                     <p id="text-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
@@ -33,7 +33,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email" type="email" placeholder="Enter email" />
+                        id="email" type="email" placeholder="Enter email" required />
                     <p id="email-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
@@ -44,7 +44,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="password" type="password" placeholder="Enter password" />
+                        id="password" type="password" placeholder="Enter password" required />
                     <p id="password-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
@@ -55,7 +55,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="number" type="number" placeholder="Enter number" />
+                        id="number" type="number" placeholder="Enter number" required />
                     <p id="number-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
@@ -66,7 +66,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="date" type="date" />
+                        id="date" type="date" required />
                     <p id="date-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
@@ -77,7 +77,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="file" type="file" />
+                        id="file" type="file" required />
                     <p id="file-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
@@ -88,7 +88,7 @@
                     </label>
                     <select
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="select">
+                        id="select" required>
                         <option value="">Select an option</option>
                         <option>Option 1</option>
                         <option>Option 2</option>
@@ -111,16 +111,30 @@
                     <p id="radio-error" class="text-red-500 text-sm mt-1"></p>
                 </div>
 
-                <!-- Checkbox -->
-                <div class="w-full flex flex-col gap-2">
-                    <label class="block text-gray-700 text-sm font-bold">
-                        Checkbox
-                    </label>
+                <!-- Checkbox Container 1 -->
+                <div id="checkbox-group-1" class="w-full hidden">
+                    <label class="block text-gray-700 text-sm font-bold">Checkbox Group 1</label>
                     <div class="flex items-center">
-                        <input class="mr-2 leading-tight" type="checkbox" id="checkbox" name="checkbox" />
-                        <label class="text-gray-700" for="checkbox">Check me</label>
+                        <input type="checkbox" id="cb1" class="mr-2" />
+                        <label for="cb1">Checkbox 1</label>
                     </div>
-                    <p id="checkbox-error" class="text-red-500 text-sm mt-1"></p>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cb2" class="mr-2" />
+                        <label for="cb2">Checkbox 2</label>
+                    </div>
+                </div>
+
+                <!-- Checkbox Container 2 -->
+                <div id="checkbox-group-2" class="w-full hidden">
+                    <label class="block text-gray-700 text-sm font-bold">Checkbox Group 2</label>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cb3" class="mr-2" />
+                        <label for="cb3">Checkbox A</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cb4" class="mr-2" />
+                        <label for="cb4">Checkbox B</label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <button
@@ -132,6 +146,31 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const radio1 = document.getElementById("radio1");
+            const radio2 = document.getElementById("radio2");
+            const group1 = document.getElementById("checkbox-group-1");
+            const group2 = document.getElementById("checkbox-group-2");
+
+            function toggleCheckboxGroups() {
+                if (radio1.checked) {
+                    group1.style.display = "block";
+                    group2.style.display = "none";
+                } else if (radio2.checked) {
+                    group2.style.display = "block";
+                    group1.style.display = "none";
+                }
+            }
+
+            radio1.addEventListener("change", toggleCheckboxGroups);
+            radio2.addEventListener("change", toggleCheckboxGroups);
+
+            // Inisialisasi saat pertama kali
+            toggleCheckboxGroups();
+        });
+    </script>
     <script src="index.js"></script>
 </body>
 
